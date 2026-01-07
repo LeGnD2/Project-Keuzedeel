@@ -1,29 +1,29 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0" version="29.2.10">
   <diagram name="Page-1" id="e7e014a7-5840-1c2e-5031-d8a46d1fe8dd">
-    <mxGraphModel dx="530" dy="1128" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
+    <mxGraphModel dx="3447" dy="1880" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="2" parent="1" style="swimlane;whiteSpace=wrap;startSize=23;" value="" vertex="1">
           <mxGeometry height="1972" width="910" x="80" y="140" as="geometry" />
         </mxCell>
-        <mxCell id="5" parent="2" style="ellipse;shape=startState;fillColor=#000000;strokeColor=#ff0000;" value="" vertex="1">
-          <mxGeometry height="30" width="30" x="100" y="40" as="geometry" />
+        <mxCell id="xPvXiuyDOUr7X7oeXzMQ-93" edge="1" parent="2" source="5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="7">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="6" edge="1" parent="2" style="edgeStyle=elbowEdgeStyle;elbow=horizontal;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#FF0000;endFill=1;rounded=0" target="7" value="">
-          <mxGeometry x="100" y="40" as="geometry">
-            <mxPoint x="255" y="70" as="sourcePoint" />
-            <mxPoint x="255" y="110" as="targetPoint" />
-          </mxGeometry>
+        <mxCell id="5" parent="2" style="ellipse;shape=startState;fillColor=#000000;strokeColor=#ff0000;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="240.5" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="xPvXiuyDOUr7X7oeXzMQ-94" edge="1" parent="2" source="7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="8">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="7" parent="2" style="" value="Student opent&#xa;website" vertex="1">
           <mxGeometry height="50" width="110" x="200" y="110" as="geometry" />
         </mxCell>
+        <mxCell id="xPvXiuyDOUr7X7oeXzMQ-95" edge="1" parent="2" source="8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="8" parent="2" style="" value="Student logt in met&#xa;microsoft account" vertex="1">
           <mxGeometry height="50" width="110" x="200" y="220" as="geometry" />
-        </mxCell>
-        <mxCell id="9" edge="1" parent="2" source="7" style="endArrow=open;strokeColor=#FF0000;endFill=1;rounded=0" target="8" value="">
-          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="xPvXiuyDOUr7X7oeXzMQ-41" edge="1" parent="2" source="10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;">
           <mxGeometry relative="1" as="geometry">
@@ -32,9 +32,6 @@
         </mxCell>
         <mxCell id="10" parent="2" style="" value="Systeem controleert&#xa;opleiding" vertex="1">
           <mxGeometry height="50" width="110" x="200" y="325" as="geometry" />
-        </mxCell>
-        <mxCell id="11" edge="1" parent="2" source="8" style="endArrow=open;strokeColor=#FF0000;endFill=1;rounded=0" target="10" value="">
-          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="xPvXiuyDOUr7X7oeXzMQ-44" edge="1" parent="2" source="xPvXiuyDOUr7X7oeXzMQ-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="xPvXiuyDOUr7X7oeXzMQ-47">
           <mxGeometry relative="1" as="geometry">
@@ -98,11 +95,6 @@
         </mxCell>
         <mxCell id="xPvXiuyDOUr7X7oeXzMQ-54" parent="2" style="rhombus;whiteSpace=wrap;html=1;" value="Keuzedeel&lt;br&gt;al eerder&lt;br&gt;gerdaan?" vertex="1">
           <mxGeometry height="108" width="100.5" x="280.25" y="972" as="geometry" />
-        </mxCell>
-        <mxCell id="20" edge="1" parent="2" source="10" style="endArrow=open;strokeColor=#FF0000;endFill=1;rounded=0" value="">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="534.5" y="350" as="targetPoint" />
-          </mxGeometry>
         </mxCell>
         <mxCell id="xPvXiuyDOUr7X7oeXzMQ-58" parent="2" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="nee" vertex="1">
           <mxGeometry height="30" width="60" x="385.5" y="992" as="geometry" />
