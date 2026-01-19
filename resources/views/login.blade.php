@@ -131,13 +131,12 @@
             
             if (empty($user) || empty($pass)) {
                 $_SESSION['error'] = 'Vul alle velden in';
+                header('Location: ' . $_SERVER['PHP_SELF']);
+                exit;
             } else {
                 try {
                     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
                     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    
-                    // Hash het wachtwoord
-                    $hashedPassword = password_hash($pass, PASSWORD_DEFAULT);
                     
                     $stmt = $pdo->prepare("SELECT id, username, password FROM users WHERE username = ?");
                     $stmt->execute([$user]);
@@ -146,19 +145,19 @@
                     if ($userRecord && password_verify($pass, $userRecord['password'])) {
                         $_SESSION['user_id'] = $userRecord['id'];
                         $_SESSION['username'] = $userRecord['username'];
-                        $_SESSION['success'] = 'Succesvol ingelogd!';
-                        header('Location: dashboard.php');
+                        header('Location: /home.php');
                         exit;
                     } else {
-                        $_SESSION['error'] = 'Onjuiste gebruikersnaam of wachtwoord';
+                        $_SESSION['error'] = 'Onjuiste gebruikersnaam of wachtwoord. Probeer opnieuw.';
+                        header('Location: ' . $_SERVER['PHP_SELF']);
+                        exit;
                     }
                 } catch (PDOException $e) {
                     $_SESSION['error'] = 'Database fout: ' . $e->getMessage();
+                    header('Location: ' . $_SERVER['PHP_SELF']);
+                    exit;
                 }
             }
-            
-            header('Location: ' . $_SERVER['PHP_SELF']);
-            exit;
         }
         ?>
         

@@ -27,6 +27,6 @@ Route::get('/layout', function () {
     return view('layout');
 });
 
-Route::get('/login', function () {
+Route::match(['get', 'post'], '/login', function () {
     return view('login');
 });
