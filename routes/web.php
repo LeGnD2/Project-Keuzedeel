@@ -23,3 +23,10 @@ Route::get('/home', function () {
     return view('home');
 });
 
+Route::get('/layout', function () {
+    return view('layout');
+});
+
+Route::match(['get', 'post'], '/login', function () {
+    return view('login');
+});
