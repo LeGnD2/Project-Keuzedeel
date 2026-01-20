@@ -26,4 +26,11 @@ Route::get('/home', function () {
 Route::get('/keuzedeelinformatie', function () {
     return view('keuzedeelinformatie');
 });
+Route::get('/layout', function () {
+    return view('layout');
+});
 
+
+Route::match(['get', 'post'], '/login', function () {
+    return view('login');
+});
