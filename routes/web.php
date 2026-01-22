@@ -26,6 +26,11 @@ Route::get('/home', function () {
 Route::get('/keuzedeelinformatie', function () {
     return view('keuzedeelinformatie');
 });
+
+Route::get('/inschrijvingkeuzedeel', function () {
+    return view('inschrijvingkeuzedeel');
+});
+
 Route::get('/layout', function () {
     return view('layout');
 });
