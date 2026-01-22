@@ -41,7 +41,7 @@
             <p>Hier staan regels die eraan moet volgen volgens onze school.</p>
             <ul>
                 <li>max:30student per keuzedeel(min:15)</li>
-                <li>Je kan dit keuzedeel als tweede keuzedeel kiezen als er staat <p style="color:red">(*2)</p>
+                <li>Je kan dit keuzedeel als tweede keuzedeel kiezen als er staat <p style="color:red"></p>
                 </li>
                 <li></li>
                 <li></li>

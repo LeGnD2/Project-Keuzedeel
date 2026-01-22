@@ -6,5 +6,3 @@
     <p>Welcome!</p>
 
 @endsection
-
-sauiisadsadawsadsdadw

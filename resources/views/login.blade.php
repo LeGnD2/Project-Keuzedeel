@@ -108,7 +108,7 @@
         
         // Database configuratie
         $host = 'localhost';
-        $dbname = 'login_db';
+        $dbname = 'keuzedelen_systeem';
         $username = 'root';
         $password = '';
         
