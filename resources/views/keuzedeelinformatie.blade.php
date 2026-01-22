@@ -18,6 +18,9 @@
             <div class="info">
                 <h1>Hello medeleerlingen hier staan de keuzedelen die je kan kiezen</h1>
             </div>
+            <div>
+                <img class="inlog-image" src="image/inloggen12.png" alt="">
+                <button >inloggen</button></div>
         </div>
     </nav>
         
@@ -43,11 +46,10 @@
                 <li>max:30student per keuzedeel(min:15)</li>
                 <li>Je kan dit keuzedeel als tweede keuzedeel kiezen als er staat <p style="color:red"></p>
                 </li>
-                <li></li>
-                <li></li>
             </ul>
         </div>
     </div>
+    <div></div>
 
 </body>
 

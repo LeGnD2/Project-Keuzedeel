@@ -41,6 +41,15 @@ p {
     width: 100% padding:10%;
 }
 
+.inlog-image{
+    width: 100px;
+    height: 100px;
+}
+
+button{
+    margin-left: 16px;
+}
+
 .sedgwick-ave-display-regular {
     font-family: "Sedgwick Ave Display", cursive;
     font-weight: 400;
