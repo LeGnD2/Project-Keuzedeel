@@ -1,15 +1,15 @@
 body {
     background-repeat: no-repeat;
     background-size: cover;
-    padding: ;
+    padding: 0;
     background-color: black;
     color: rgb(239, 239, 239);
 }
 
 
 p {
-    padding: ;
-    text-align: ;
+    padding: 10px;
+    text-align: left;
 }
 
 .navbarg {
@@ -17,14 +17,14 @@ p {
     display: inline-flex;
     flex-grow: 1;
     gap: 18px;
-    justify-content:;
+    justify-content: space-between;
     position: relative;
     --tw-bg-opacity: 1;
     background-color: #09ac00;
 }
 
 .info {
-    position: flex;
+    display: flex;
     margin-left: 500px;
 
 }
@@ -38,7 +38,8 @@ p {
     object-position: center center;
     position: relative;
     transition: all .5s;
-    width: 100% padding:10%;
+    width: 100%;
+    padding: 10%;
 }
 
 .inlog-image{
@@ -65,7 +66,7 @@ button{
     font-size: 20px;
     border: 1px solid white;
     padding: 10px;
-    text-align: ;
+    text-align: center;
     font-family: "Sedgwick Ave Display", cursive;
     font-weight: 400;
     font-style: normal;
@@ -74,7 +75,7 @@ button{
 
 .regelssec {
     display: flex;
-    align-items: left;
+    align-items: center;
     position: absolute;
     top: 160px;
     right: 100px;
