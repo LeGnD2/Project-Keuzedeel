@@ -147,6 +147,64 @@
             line-height: 1.6;
         }
 
+        .keuzedeel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .status-badge {
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-open {
+            background: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+            border: 1px solid #2ecc71;
+        }
+
+        .status-gesloten {
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+            border: 1px solid #e74c3c;
+        }
+
+        .keuzedeel-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn-enroll {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-enroll:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+        }
+
+        .btn-enroll:disabled {
+            background: #666;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         .regelssec {
             max-width: 1200px;
             margin: 4rem auto;
@@ -220,9 +278,9 @@
 <body>
     <nav>
         <div class="navbarg">
-            <div class="logo">
+            <a href="{{ route('home') }}" class="logo">
                 <img src="{{ asset('image/Logo-TCR.webp') }}" alt="Logo TCR">
-            </div>
+            </a>
             <div class="info">
                 <h1>Hallo medeleerlingen, hier staan de keuzedelen die je kunt kiezen</h1>
             </div>
@@ -241,20 +299,40 @@
         
     <div class="keuzesec">
         <div class="sedgwick-ave-display-regular">
-            <div class="keuzedeel-card">
-                <h2>Keuzedeel: JavaScript</h2>
-                <p>Hier leer je allerlei vaardigheden over JavaScript. Van basis syntax tot geavanceerde frameworks en libraries zoals React, Vue, en Node.js.</p>
-            </div>
-
-            <div class="keuzedeel-card">
-                <h2>Keuzedeel: Frontend Development</h2>
-                <p>Hier leer je allerlei vaardigheden over Frontend Development. Bouw moderne, responsive websites met HTML, CSS, JavaScript en moderne frameworks.</p>
-            </div>
-
-            <div class="keuzedeel-card">
-                <h2>Keuzedeel: Gaming Development</h2>
-                <p>Hier leer je allerlei vaardigheden over Gaming Development. Creëer je eigen games met moderne game engines zoals Unity, Unreal Engine en C#.</p>
-            </div>
+            @forelse($keuzedelen as $keuzedeel)
+                <div class="keuzedeel-card">
+                    <div class="keuzedeel-header">
+                        <div>
+                            <h2>Keuzedeel: {{ $keuzedeel->titel }}</h2>
+                        </div>
+                        <span class="status-badge status-{{ $keuzedeel->status }}">
+                            {{ $keuzedeel->status }}
+                        </span>
+                    </div>
+                    <p>{{ $keuzedeel->beschrijving }}</p>
+                    <p style="margin-top: 1rem; color: #888; font-size: 0.9rem;"><strong>Eisen:</strong> {{ $keuzedeel->eisen }}</p>
+                    <p style="color: #888; font-size: 0.9rem;"><strong>Max studenten:</strong> {{ $keuzedeel->max_studenten }} | <strong>Inschrijvingen:</strong> {{ $keuzedeel->inschrijvingen ?? 0 }}</p>
+                    
+                    <div class="keuzedeel-actions">
+                        @if(session()->has('user_id'))
+                            <form method="POST" action="{{ route('enroll.keuzedeel') }}" style="display: inline;">
+                                @csrf
+                                <input type="hidden" name="keuzedeel_id" value="{{ $keuzedeel->id }}">
+                                <button type="submit" class="btn-enroll" {{ $keuzedeel->status === 'gesloten' ? 'disabled' : '' }}>
+                                    ✏️ Inschrijven
+                                </button>
+                            </form>
+                        @else
+                            <a href="{{ route('login') }}" class="btn-enroll">Inloggen om in te schrijven</a>
+                        @endif
+                    </div>
+                </div>
+            @empty
+                <div class="keuzedeel-card">
+                    <h2>Geen keuzedelen beschikbaar</h2>
+                    <p>Er zijn momenteel geen keuzedelen beschikbaar. Kom later terug!</p>
+                </div>
+            @endforelse
         </div>
     </div>
 

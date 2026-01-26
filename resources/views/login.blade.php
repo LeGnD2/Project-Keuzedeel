@@ -6,6 +6,12 @@
     <title>Inloggen</title>
     <link rel="stylesheet" href="{{asset('css/loginStyle.css')}}">
     <style>
+        .logo {
+            display: inline-block;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
         .success-message {
             background-color: #d4edda;
             color: #155724;
@@ -43,6 +49,9 @@
 </head>
 <body>
     <div class="login-container">
+        <a href="" class="logo" style="margin-bottom: 1.5rem; display: block;">
+            <img src="{{ asset('image/Logo-TCR.webp') }}" alt="Logo TCR" style="height: 50px; width: auto;">
+        </a>
         <h2>Inloggen</h2>
         
         @if(session('success'))
