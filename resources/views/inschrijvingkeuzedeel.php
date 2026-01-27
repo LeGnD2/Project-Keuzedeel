@@ -15,11 +15,12 @@
             <div class="info">
                 <h1>Keuzedeel</h1>
             </div>
-            <div class="inlogbutton">
-                <button>Inloggen</button>
-            </div>
+            <div>
+                <img class="inlog-image" src="image/inloggen12.png" alt="">
+                <button>inloggen</button></div>
         </div>
     </nav>
+    
 
 <div><img src="image/keuzedelen1.webp" alt=""></div>
     
