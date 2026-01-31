@@ -6,6 +6,11 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 
+use App\Http\Controllers\InschrijvingController;
+use App\Http\Controllers\KeuzedeelController;
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -47,3 +52,15 @@ Route::get('/inschrijvingkeuzedeel', function () {
 Route::get('/layout', function () {
     return view('layout');
 });
+
+//erbij gevoegd
+Route::post('/inschrijvingen', [InschrijvingController::class, 'store']);
+
+
+Route::post('/inschrijven', [InschrijvingController::class, 'store'])
+    ->name('enroll.keuzedeel');
+
+Route::get('/keuzedelen', [KeuzedeelController::class, 'index'])
+    ->name('keuzedelen.index');
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
