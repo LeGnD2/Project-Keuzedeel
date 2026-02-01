@@ -117,4 +117,6 @@ public function enroll(Request $request)
 
     return redirect()->route('home')
         ->with('success', 'Je bent succesvol ingeschreven!');
+
+}
 }
