@@ -298,6 +298,20 @@
     </nav>
         
     <div class="keuzesec">
+        @if(session('error'))
+    <div style="
+        background: rgba(231,76,60,0.2);
+        border: 1px solid #e74c3c;
+        color: #e74c3c;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        text-align: center;
+        font-weight: 600;
+    ">
+        {{ session('error') }}
+    </div>
+@endif
         <div class="sedgwick-ave-display-regular">
             @forelse($keuzedelen as $keuzedeel)
                 <div class="keuzedeel-card">
