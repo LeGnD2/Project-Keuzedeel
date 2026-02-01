@@ -225,7 +225,7 @@
             color: #e74c3c;
         }
 
-        .regels > p {
+        .regels>p {
             margin-bottom: 1.5rem;
             color: #b0b0b0;
         }
@@ -264,7 +264,8 @@
                 font-size: 0.9rem;
             }
 
-            .keuzesec, .regelssec {
+            .keuzesec,
+            .regelssec {
                 margin: 2rem auto;
             }
 
@@ -286,18 +287,20 @@
             </div>
             <div class="login-container">
                 <img class="inlog-image" src="{{ asset('image/inloggen12.png') }}" alt="Inloggen icoon">
-                
+
                 @if(session()->has('user_id'))
-                    <span style="margin-right: 1rem; color: #4a90e2;">Welkom, {{ session('naam') }}!</span>
-                    <a href="{{ route('logout') }}" class="login-btn">Uitloggen</a>
+                <span style="margin-right: 1rem; color: #4a90e2;">Welkom, {{ session('naam') }}!</span>
+                <a href="{{ route('logout') }}" class="login-btn">Uitloggen</a>
                 @else
-                    <a href="{{ route('login') }}" class="login-btn">Inloggen</a>
+                <a href="{{ route('login') }}" class="login-btn">Inloggen</a>
                 @endif
             </div>
         </div>
     </nav>
-        
+    </nav>
+
     <div class="keuzesec">
+<<<<<<< Updated upstream
         @if(session('error'))
     <div style="
         background: rgba(231,76,60,0.2);
@@ -312,41 +315,62 @@
         {{ session('error') }}
     </div>
 @endif
+=======
+        @if(session('success'))
+        <div style="background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); color: white; padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; font-weight: 600; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);">
+            ✅ {{ session('success') }}
+        </div>
+        @endif
+
+        @if(session('error'))
+        <div style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; font-weight: 600; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);">
+            ❌ {{ session('error') }}
+        </div>
+        @endif
+
+>>>>>>> Stashed changes
         <div class="sedgwick-ave-display-regular">
-            @forelse($keuzedelen as $keuzedeel)
-                <div class="keuzedeel-card">
-                    <div class="keuzedeel-header">
-                        <div>
-                            <h2>Keuzedeel: {{ $keuzedeel->titel }}</h2>
-                        </div>
-                        <span class="status-badge status-{{ $keuzedeel->status }}">
-                            {{ $keuzedeel->status }}
-                        </span>
-                    </div>
-                    <p>{{ $keuzedeel->beschrijving }}</p>
-                    <p style="margin-top: 1rem; color: #888; font-size: 0.9rem;"><strong>Eisen:</strong> {{ $keuzedeel->eisen }}</p>
-                    <p style="color: #888; font-size: 0.9rem;"><strong>Max studenten:</strong> {{ $keuzedeel->max_studenten }} | <strong>Inschrijvingen:</strong> {{ $keuzedeel->inschrijvingen ?? 0 }}</p>
-                    
-                    <div class="keuzedeel-actions">
-                        @if(session()->has('user_id'))
-                            <form method="POST" action="{{ route('enroll.keuzedeel') }}" style="display: inline;">
-                                @csrf
-                                <input type="hidden" name="keuzedeel_id" value="{{ $keuzedeel->id }}">
-                                <button type="submit" class="btn-enroll" {{ $keuzedeel->status === 'gesloten' ? 'disabled' : '' }}>
-                                    ✏️ Inschrijven
-                                </button>
-                            </form>
-                        @else
-                            <a href="{{ route('login') }}" class="btn-enroll">Inloggen om in te schrijven</a>
-                        @endif
-                    </div>
-                </div>
-            @empty
-                <div class="keuzedeel-card">
-                    <h2>Geen keuzedelen beschikbaar</h2>
-                    <p>Er zijn momenteel geen keuzedelen beschikbaar. Kom later terug!</p>
-                </div>
-            @endforelse
+           @forelse($keuzedelen as $keuzedeel)
+    <div class="keuzedeel-card">
+        <div class="keuzedeel-header">
+            <div>
+                <h2>Keuzedeel: {{ $keuzedeel->titel }}</h2>
+            </div>
+            <span class="status-badge status-{{ $keuzedeel->status }}">
+                {{ $keuzedeel->status }}
+            </span>
+        </div>
+        <p>{{ $keuzedeel->beschrijving }}</p>
+        <p style="margin-top: 1rem; color: #888; font-size: 0.9rem;"><strong>Eisen:</strong> {{ $keuzedeel->eisen }}</p>
+        <p style="color: #888; font-size: 0.9rem;"><strong>Max studenten:</strong> {{ $keuzedeel->max_studenten }} | <strong>Inschrijvingen:</strong> {{ $keuzedeel->inschrijvingen ?? 0 }}</p>
+        
+        <div class="keuzedeel-actions">
+            @if(session()->has('user_id'))
+                @if(in_array($keuzedeel->id, $ingeschrevenKeuzedelen))
+                    <span class="status-badge status-open" style="background: rgba(46, 204, 113, 0.3);">
+                        ✅ Al ingeschreven
+                    </span>
+                @else
+                    <form method="POST" action="{{ route('enroll.keuzedeel') }}" style="display: inline;">
+                        @csrf
+                        <input type="hidden" name="keuzedeel_id" value="{{ $keuzedeel->id }}">
+                        <button type="submit" class="btn-enroll" 
+                            {{ $keuzedeel->status === 'gesloten' || $keuzedeel->inschrijvingen >= $keuzedeel->max_studenten ? 'disabled' : '' }}>
+                            ✏️ Inschrijven
+                        </button>
+                    </form>
+                @endif
+            @else
+                <a href="{{ route('login') }}" class="btn-enroll">Inloggen om in te schrijven</a>
+            @endif
+        </div>
+    </div>
+@empty
+    <div class="keuzedeel-card">
+        <h2>Geen keuzedelen beschikbaar</h2>
+        <p>Er zijn momenteel geen keuzedelen beschikbaar. Kom later terug!</p>
+    </div>
+@endforelse    
         </div>
     </div>
 

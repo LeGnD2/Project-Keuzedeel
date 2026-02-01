@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Keuzedeel;
 use App\Models\Inschrijving;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -101,6 +102,7 @@ public function enroll(Request $request)
             exit;
         }
 
+<<<<<<< Updated upstream
         Inschrijving::create([
             'student_id' => $studentId,
             'keuzedeel_id' => $keuzedeelId,
@@ -119,4 +121,52 @@ public function enroll(Request $request)
         ->with('success', 'Je bent succesvol ingeschreven!');
 
 }
+=======
+        return view('home', compact(
+            'keuzedelen',
+            'ingeschrevenKeuzedelen'
+        ));
+    }
+
+    public function enroll(Request $request)
+    {
+        // Check of gebruiker ingelogd is
+        if (!session()->has('user_id')) {
+            return redirect()->back()->with('error', 'Je moet ingelogd zijn om in te schrijven');
+        }
+
+        // Validatie
+        $request->validate([
+            'keuzedeel_id' => 'required|exists:keuzedelen,id'
+        ]);
+
+        $keuzedeel = Keuzedeel::find($request->keuzedeel_id);
+
+        // Check of keuzedeel vol is
+        if ($keuzedeel->inschrijvingen >= $keuzedeel->max_studenten) {
+            return redirect()->back()->with('error', 'Dit keuzedeel is vol');
+        }
+
+        // Check of al ingeschreven
+        $bestaatAl = Inschrijving::where('student_id', session('user_id'))
+            ->where('keuzedeel_id', $request->keuzedeel_id)
+            ->exists();
+
+        if ($bestaatAl) {
+            return redirect()->back()->with('error', 'Je bent al ingeschreven voor dit keuzedeel');
+        }
+
+        // Inschrijving aanmaken
+        Inschrijving::create([
+            'student_id' => session('user_id'),
+            'keuzedeel_id' => $request->keuzedeel_id,
+            'status' => 'ingeschreven'
+        ]);
+
+        // Update aantal inschrijvingen
+        $keuzedeel->increment('inschrijvingen');
+
+        return redirect()->back()->with('success', 'Je bent succesvol ingeschreven!');
+    }
+>>>>>>> Stashed changes
 }
